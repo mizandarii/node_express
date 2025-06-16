@@ -15,27 +15,9 @@ app.set('views', 'views')
 
 app.use(express.static('public'))
 
-app.get('/', (req, res) => {
-    res.render('index', {
-        title: 'Главная страница',
-        isHome: true
-    })
-})
-
-app.get('/add', (req, res)=>{
-    res.render('add', {
-        title:'Добавить курс',
-        isAdd: true
-    })
-})
-
-app.get('/courses', (req, res) => {
-    res.render('courses', {
-        title: 'Курсы',
-        isCourses: true
-    })
-})
-
+app.use('/', homeRoutes)
+app.use('/add', addRoutes)
+app.use('/courses', coursesRoutes)
 
 const PORT = process.env.PORT || 3000
 
